@@ -1,17 +1,17 @@
 function addNumbersIn(inputString) {
-  let delimiters = [',', '-', /[,|-]/];
+  let defaultDelimiters = [',', '-', /[,|-]/];
   let numbers = inputString;
   let summation = 0;
   const delimiterMatch = inputString.match(/^\/\/\[(.)\]/);
 
   if(delimiterMatch){
     const delimiter = delimiterMatch[1];
-    delimiters.pop();
-    delimiters.push(new RegExp(`[${delimiter}|,|-]`));
+    defaultDelimiters.pop();
+    defaultDelimiters.push(new RegExp(`[${delimiter}|,|-]`));
     numbers = inputString.slice(delimiterMatch[0].length +3 );
   }
 
-  numbers = inputString.split(delimiters[2]);
+  numbers = inputString.split(defaultDelimiters[2]);
 
   if(inputString === "")
     return 0;
