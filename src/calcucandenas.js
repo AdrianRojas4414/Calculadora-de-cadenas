@@ -4,32 +4,28 @@ function doMultipleSliceWith(defaultDelimiters, comandInString, stringToSplit){
   defaultDelimiters.push(new RegExp(`[${comandDelimiter}|,|-]`));
   return stringToSplit.slice(comandInString[0].length);
 }
-
+function addArray(arrayOfStringNumbers){
+  let summation = 0;
+  for(const number of arrayOfStringNumbers){
+    summation+= number <= 1000? Number(number):0;
+  }
+  return summation;
+}
 
 function addNumbersIn(inputString) {
   let defaultDelimiters = [',', '-', /[,|-]/];
   let arrayOfStringNumbers;
-  let summation = 0;
   const isComandInString = inputString.match(/^\/\/\[(.)\]/);
-
   if(isComandInString){
     arrayOfStringNumbers = doMultipleSliceWith(defaultDelimiters, isComandInString, inputString);
   }
-
   arrayOfStringNumbers = inputString.split(defaultDelimiters[2]);
 
   if(inputString === "")
     return 0;
-
   if(arrayOfStringNumbers.length != 1){
-    for(const num of arrayOfStringNumbers){
-      if(num <= 1000)
-        summation = summation + Number(num);
-    }  
-    return summation;
+    return addArray(arrayOfStringNumbers);
   }
-  
   return Number(arrayOfStringNumbers[0]);
 }
-
 export default addNumbersIn;
