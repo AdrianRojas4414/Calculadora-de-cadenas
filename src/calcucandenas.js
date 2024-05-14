@@ -5,9 +5,9 @@ function addNumbersIn(inputString) {
   const isComandInString = inputString.match(/^\/\/\[(.)\]/);
 
   if(isComandInString){
-    const delimiter = isComandInString[1];
+    const comandDelimiter = isComandInString[1];
     defaultDelimiters.pop();
-    defaultDelimiters.push(new RegExp(`[${delimiter}|,|-]`));
+    defaultDelimiters.push(new RegExp(`[${comandDelimiter}|,|-]`));
     numbers = inputString.slice(isComandInString[0].length +3 );
   }
 
