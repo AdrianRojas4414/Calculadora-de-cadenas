@@ -1,4 +1,4 @@
-function calculadora(chain) {
+function addNumbersIn(chain) {
   let delimiters = [',', '-', /[,|-]/];
   let numbers = chain;
   let acc = 0;
@@ -27,4 +27,4 @@ function calculadora(chain) {
   return Number(numbers[0]);
 }
 
-export default calculadora;
+export default addNumbersIn;
