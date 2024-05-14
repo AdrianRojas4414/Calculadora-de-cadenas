@@ -1,7 +1,7 @@
 function addNumbersIn(inputString) {
   let delimiters = [',', '-', /[,|-]/];
   let numbers = inputString;
-  let acc = 0;
+  let summation = 0;
   const delimiterMatch = inputString.match(/^\/\/\[(.)\]/);
 
   if(delimiterMatch){
@@ -19,9 +19,9 @@ function addNumbersIn(inputString) {
   if(numbers.length != 1){
     for(const num of numbers){
       if(num <= 1000)
-        acc = acc + Number(num);
+        summation = summation + Number(num);
     }  
-    return acc;
+    return summation;
   }
   
   return Number(numbers[0]);
