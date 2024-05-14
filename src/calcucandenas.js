@@ -1,6 +1,6 @@
 function addNumbersIn(inputString) {
   let defaultDelimiters = [',', '-', /[,|-]/];
-  let numbers = inputString;
+  let arrayOfStringNumbers;
   let summation = 0;
   const isComandInString = inputString.match(/^\/\/\[(.)\]/);
 
@@ -8,23 +8,23 @@ function addNumbersIn(inputString) {
     const comandDelimiter = isComandInString[1];
     defaultDelimiters.pop();
     defaultDelimiters.push(new RegExp(`[${comandDelimiter}|,|-]`));
-    numbers = inputString.slice(isComandInString[0].length +3 );
+    arrayOfStringNumbers = inputString.slice(isComandInString[0].length);
   }
 
-  numbers = inputString.split(defaultDelimiters[2]);
+  arrayOfStringNumbers = inputString.split(defaultDelimiters[2]);
 
   if(inputString === "")
     return 0;
 
-  if(numbers.length != 1){
-    for(const num of numbers){
+  if(arrayOfStringNumbers.length != 1){
+    for(const num of arrayOfStringNumbers){
       if(num <= 1000)
         summation = summation + Number(num);
     }  
     return summation;
   }
   
-  return Number(numbers[0]);
+  return Number(arrayOfStringNumbers[0]);
 }
 
 export default addNumbersIn;
