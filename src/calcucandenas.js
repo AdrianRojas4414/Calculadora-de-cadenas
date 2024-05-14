@@ -1,19 +1,19 @@
-function addNumbersIn(chain) {
+function addNumbersIn(inputString) {
   let delimiters = [',', '-', /[,|-]/];
-  let numbers = chain;
+  let numbers = inputString;
   let acc = 0;
-  const delimiterMatch = chain.match(/^\/\/\[(.)\]/);
+  const delimiterMatch = inputString.match(/^\/\/\[(.)\]/);
 
   if(delimiterMatch){
     const delimiter = delimiterMatch[1];
     delimiters.pop();
     delimiters.push(new RegExp(`[${delimiter}|,|-]`));
-    numbers = chain.slice(delimiterMatch[0].length +3 );
+    numbers = inputString.slice(delimiterMatch[0].length +3 );
   }
 
-  numbers = chain.split(delimiters[2]);
+  numbers = inputString.split(delimiters[2]);
 
-  if(chain === "")
+  if(inputString === "")
     return 0;
 
   if(numbers.length != 1){
