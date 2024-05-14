@@ -1,3 +1,11 @@
+function doMultipleSliceWith(defaultDelimiters, comandInString, stringToSplit){
+  const comandDelimiter = comandInString[1];
+  defaultDelimiters.pop();
+  defaultDelimiters.push(new RegExp(`[${comandDelimiter}|,|-]`));
+  return stringToSplit.slice(comandInString[0].length);
+}
+
+
 function addNumbersIn(inputString) {
   let defaultDelimiters = [',', '-', /[,|-]/];
   let arrayOfStringNumbers;
@@ -5,10 +13,7 @@ function addNumbersIn(inputString) {
   const isComandInString = inputString.match(/^\/\/\[(.)\]/);
 
   if(isComandInString){
-    const comandDelimiter = isComandInString[1];
-    defaultDelimiters.pop();
-    defaultDelimiters.push(new RegExp(`[${comandDelimiter}|,|-]`));
-    arrayOfStringNumbers = inputString.slice(isComandInString[0].length);
+    arrayOfStringNumbers = doMultipleSliceWith(defaultDelimiters, isComandInString, inputString);
   }
 
   arrayOfStringNumbers = inputString.split(defaultDelimiters[2]);
