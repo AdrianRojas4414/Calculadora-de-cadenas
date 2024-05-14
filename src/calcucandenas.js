@@ -1,15 +1,18 @@
 function addNumbersIn(inputString) {
   let defaultDelimiters = [',', '-', /[,|-]/];
-  let arrayOfStringNumbers;
+  let arrayOfStringNumbers = asignDelimiters(inputString, defaultDelimiters);
+  return addArray(arrayOfStringNumbers);
+}
 
+function asignDelimiters(inputString, defaultDelimiters){
   const isComandInString = inputString.match(/^\/\/\[(.)\]/);
+  let stringofNumbers; 
   if(isComandInString){
     defaultDelimiters = getNewDelimiter(defaultDelimiters, isComandInString);
-    arrayOfStringNumbers = removeDelimiterFromString(inputString, isComandInString);
+    stringofNumbers =  removeDelimiterFromString(inputString, isComandInString);
   }
-  arrayOfStringNumbers = inputString.split(defaultDelimiters[2]);
-  
-  return addArray(arrayOfStringNumbers);
+  stringofNumbers = inputString.split(defaultDelimiters[2])
+  return stringofNumbers;
 }
 
 function getNewDelimiter(Delimiters, comandInString){
